@@ -32,7 +32,7 @@ label {
 input, select {
     width: 92%;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
     text-align: left;
