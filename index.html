@@ -16,8 +16,13 @@
             <input type="text" id="link" placeholder="Enter Link Here">
             <button onclick="generateLinkQRCode()">Generate QR Code</button>
             <div id="link-qr-code"></div>
-            <button id="download-button" style="display:none;" onclick="downloadQRCode()">Download QR Code</button>
+
+            <div class="download-buttons" style="display:none;" id="download-buttons">
+                <button onclick="downloadAsPDF()">Download as PDF</button>
+                <button onclick="downloadAsJPEG()">Download as JPEG</button>
+            </div>
         </div>
+    
     </div>
     <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
     <script src="script.js"></script>
