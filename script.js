@@ -1,28 +1,36 @@
-function generateLinkQRCode() {
-    const link = document.getElementById('link').value;
+ let qrCodeDataUrl;
 
-    QRCode.toDataURL(link, function (err, url) {
-        if (err) console.error(err);
+        function generateLinkQRCode() {
+            const link = document.getElementById('link').value;
 
-        const img = document.createElement('img');
-        img.src = url;
-        const qrCodeContainer = document.getElementById('link-qr-code');
-        qrCodeContainer.innerHTML = '';
-        qrCodeContainer.appendChild(img);
+            QRCode.toDataURL(link, function (err, url) {
+                if (err) console.error(err);
 
-        const downloadButton = document.getElementById('download-button');
-        downloadButton.style.display = 'block';
-        downloadButton.onclick = function() {
-            downloadQRCode(url);
-        };
-    });
-}
+                const img = document.createElement('img');
+                img.src = url;
+                const qrCodeContainer = document.getElementById('link-qr-code');
+                qrCodeContainer.innerHTML = '';
+                qrCodeContainer.appendChild(img);
 
-function downloadQRCode(url) {
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'qr_code.png';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}
+                qrCodeDataUrl = url;
+
+                const downloadButtons = document.getElementById('download-buttons');
+                downloadButtons.style.display = 'flex';
+            });
+        }
+
+        function downloadAsPDF() {
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF();
+            pdf.addImage(qrCodeDataUrl, 'PNG', 15, 40, 180, 180);
+            pdf.save('qr_code.pdf');
+        }
+
+        function downloadAsJPEG() {
+            const link = document.createElement('a');
+            link.href = qrCodeDataUrl;
+            link.download = 'qr_code.jpeg';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
