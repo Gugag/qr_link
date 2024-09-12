@@ -1,4 +1,4 @@
- let qrCodeDataUrl;
+     let qrCodeDataUrl;
 
         function generateLinkQRCode() {
             const link = document.getElementById('link').value;
@@ -20,7 +20,8 @@
         }
 
         function downloadAsPDF() {
-            const { jsPDF } = window.jspdf;
+            // Ensure correct jsPDF reference
+            const jsPDF = window.jspdf.jsPDF;
             const pdf = new jsPDF();
             pdf.addImage(qrCodeDataUrl, 'PNG', 15, 40, 180, 180);
             pdf.save('qr_code.pdf');
