@@ -6,13 +6,17 @@
     <title>QR Code Generator</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
 </head>
 <body>
     <div class="container">
         <h1>QR Code Generator</h1>
 
         <div class="form-group">
+            <div>
             <label id="qrtype" for="type">Select QR Code Type</label><br>
+        </div>
+        <div>
             <select id="type" onchange="showFields()">
                 <option value="link">Website</option>
                 <option value="pdf">PDF</option>
@@ -21,6 +25,7 @@
                 <option value="wifi">WiFi</option>
                 <!-- Add more options as needed -->
             </select>
+        </div>
         </div>
 
         <!-- Input fields for different QR code types -->
