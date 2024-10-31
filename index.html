@@ -12,21 +12,53 @@
         <h1>QR Code Generator</h1>
 
         <div class="form-group">
-            <h3>Generate Link QR Code</h3>
-            <input type="text" id="link" placeholder="Enter Link Here">
-            <button onclick="generateLinkQRCode()">Generate QR Code</button>
-            <div id="link-qr-code"></div>
-
-            <div class="download-buttons" style="display:none;" id="download-buttons">
-                <button onclick="downloadAsPDF()">Download as PDF</button>
-                <button onclick="downloadAsJPEG()">Download as JPEG</button>
-            </div>
+            <label for="type">Select QR Code Type</label>
+            <select id="type" onchange="showFields()">
+                <option value="link">Website</option>
+                <option value="pdf">PDF</option>
+                <option value="vcard">vCard</option>
+                <option value="text">Text</option>
+                <option value="wifi">WiFi</option>
+                <!-- Add more options as needed -->
+            </select>
         </div>
-    
+
+        <!-- Input fields for different QR code types -->
+        <div class="form-group" id="link-group">
+            <input type="text" id="link" placeholder="Enter Website URL">
+        </div>
+        <div class="form-group" id="pdf-group" style="display:none;">
+            <input type="text" id="pdf" placeholder="Enter PDF Link">
+        </div>
+        <div class="form-group" id="vcard-group" style="display:none;">
+            <input type="text" id="vcard-name" placeholder="Enter Name">
+            <input type="text" id="vcard-phone" placeholder="Enter Phone Number">
+            <input type="text" id="vcard-email" placeholder="Enter Email">
+        </div>
+        <div class="form-group" id="text-group" style="display:none;">
+            <input type="text" id="text" placeholder="Enter Text">
+        </div>
+        <div class="form-group" id="wifi-group" style="display:none;">
+            <input type="text" id="wifi-ssid" placeholder="Enter WiFi SSID">
+            <input type="text" id="wifi-password" placeholder="Enter WiFi Password">
+            <select id="type">
+                <option value="WPA">WPA/WPA2</option>
+                <option value="WEP">WEP</option>
+                <option value="">None</option>
+            </select>
+        </div>
+
+        <button onclick="generateQRCode()">Generate QR Code</button>
+        <div id="qr-code"></div>
+
+        <div class="download-buttons" style="display:none;" id="download-buttons">
+            <button onclick="downloadAsPDF()">Download as PDF</button>
+            <button onclick="downloadAsJPEG()">Download as JPEG</button>
+        </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="script.js"></script>
-
 </body>
 </html>
