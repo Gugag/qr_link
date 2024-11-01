@@ -76,7 +76,7 @@ button:hover {
     font-size: 12px;
     text-align: left;
     background-color: transparent;
-    ccolor: black;
+    color: black;
     border: 1px solid #ccc;
     border-radius: 5px;
     cursor: pointer;
@@ -94,7 +94,7 @@ button:hover {
     font-size: 12px;
     text-align: left;
     background-color: transparent;
-    ccolor: black;
+    color: black;
     border: 1px solid #ccc;
     border-radius: 5px;
     cursor: pointer;
