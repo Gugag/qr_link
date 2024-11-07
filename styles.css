@@ -62,7 +62,8 @@ button:hover {
 }
 #qrtype{
     text-align: center;
-    margin-top: 4px;
+    font-size: 2vh;
+    margin-top: 1px;
     margin-left: 15px;
 
 }
@@ -78,7 +79,7 @@ button:hover {
     background-color: transparent;
     color: black;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     appearance: none;
     
