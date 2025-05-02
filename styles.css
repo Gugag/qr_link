@@ -18,6 +18,19 @@ body {
 }
 h1, h3 {
     text-align: center;
+    
+        width: 20ch; 
+        text-wrap: nowrap; 
+        overflow: hidden;
+        animation: typing 2s steps(20) infinite
+        alternate-reverse;  
+        }
+
+        @keyframes typing {
+           from {
+            width: 0ch;
+            }
+        
 }
 .form-group {
     margin-bottom: 20px;
