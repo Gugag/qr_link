@@ -22,7 +22,7 @@ h1, h3 {
         width: 17.5ch; 
         text-wrap: nowrap; 
         overflow: hidden;
-        animation: typing 2s steps(50) infinite;  
+        animation: typing 2s steps(70) infinite;  
         }
 
         @keyframes typing {
