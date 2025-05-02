@@ -16,21 +16,20 @@ body {
     border-radius: 10px;
     width: 300px;
 }
-h1, h3 {
+h1 {
     text-align: center;
-    
-        width: 16.5ch; 
-        text-wrap: nowrap; 
-        overflow: hidden;
-        animation: typing 2s steps(70) ;  
-        }
+    width: 16.8ch; 
+    text-wrap: nowrap; 
+    overflow: hidden;
+    animation: typing 5s steps(170) ;  
+    }
 
-        @keyframes typing {
-           from {
+    @keyframes typing {
+        from {
             width: 0ch;
-            }
-        
+        }     
 }
+
 .form-group {
     margin-bottom: 20px;
 }
