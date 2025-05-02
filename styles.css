@@ -22,7 +22,7 @@ h1, h3 {
         width: 18ch; 
         text-wrap: nowrap; 
         overflow: hidden;
-        animation: typing 2s steps(40) infinite
+        animation: typing 2s steps(50) infinite
         alternate-reverse;  
         }
 
