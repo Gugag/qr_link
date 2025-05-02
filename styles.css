@@ -19,7 +19,7 @@ body {
 h1, h3 {
     text-align: center;
     
-        width: 17.5ch; 
+        width: 17ch; 
         text-wrap: nowrap; 
         overflow: hidden;
         animation: typing 2s steps(70) ;  
