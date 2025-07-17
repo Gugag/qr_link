@@ -13,87 +13,85 @@
     
 </head>
 <body>
-    <div class="container">
-        <h1>QR Code Generator</h1>
+  <div class="container">
+    <h1>QR Code Generator</h1>
 
-        <div class="form-group">
-            <div>
-            <label id="qrtype" for="type">Select QR Code Type</label><br>
-        </div>
-        <div>
-            <select id="type" onchange="showFields()">
-                <option value="link">Website URL</option>
-                <option value="pdf">PDF</option>
-                <option value="vcard">vCard</option>
-                <option value="text">Text</option>
-                <option value="wifi">WiFi</option>
-                <!-- Add more options as needed -->
-            </select>
-        </div>
-        </div>
-
-        <!-- Input fields for different QR code types -->
-        <div class="form-group" id="link-group">
-            <input type="text" id="link" placeholder="Enter Website URL">
-        </div>
-        <div class="form-group" id="pdf-group" style="display:none;">
-            <input type="text" id="pdf" placeholder="Enter PDF Link">
-        </div>
-        <div class="form-group" id="vcard-group" style="display:none;">
-            <input type="text" id="vcard-name" placeholder="Enter Name">
-            <input type="text" id="vcard-phone" placeholder="Enter Phone Number">
-            <input type="text" id="vcard-email" placeholder="Enter Email">
-        </div>
-        <div class="form-group" id="text-group" style="display:none;">
-            <input type="text" id="text" placeholder="Enter Text">
-        </div>
-        <div class="form-group" id="wifi-group" style="display:none;">
-            <input type="text" id="wifi-ssid" placeholder="Enter WiFi SSID">
-            <input type="text" id="wifi-password" placeholder="Enter WiFi Password">
-            <select id="wifi-encryption">
-                <option value="WPA">WPA/WPA2</option>
-                <option value="WEP">WEP</option>
-                <option value="">None</option>
-            </select>
-        </div>
-
-        <button onclick="generateQRCode()">Generate QR Code</button>
-        <div id="qr-code"></div>
-
-        <div class="download-buttons" style="display:none;" id="download-buttons">
-            <button onclick="downloadAsPDF()">Download as PDF</button>
-            <button onclick="downloadAsJPEG()">Download as JPEG</button>
-        </div>
-        <br>
-        
-            <!-- Google AdSense Ad Unit -->
-<div style="width:100%; max-width:728px; margin:20px auto;  text-align:center;">
-  <ins class="adsbygoogle"
-       style="display:inline-block;width:728px;height:90px"
-       data-ad-client="ca-pub-1234552946070834"
-       data-ad-slot="3273843323"></ins>
-</div>
+    <div class="form-group">
+      <label id="qrtype" for="type">Select QR Code Type</label><br>
+      <select id="type" onchange="showFields()">
+        <option value="link">Website URL</option>
+        <option value="pdf">PDF</option>
+        <option value="vcard">vCard</option>
+        <option value="text">Text</option>
+        <option value="wifi">WiFi</option>
+      </select>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="script.js"></script>
+    <!-- Input fields for different QR code types -->
+    <div class="form-group" id="link-group">
+      <input type="text" id="link" placeholder="Enter Website URL">
+    </div>
 
-     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234552946070834"
-     crossorigin="anonymous"></script>
-<!-- itdata -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-1234552946070834"
-     data-ad-slot="3273843323"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
+    <div class="form-group" id="pdf-group" style="display:none;">
+      <input type="text" id="pdf" placeholder="Enter PDF Link">
+    </div>
 
-    <script>
-  window.addEventListener('load', function() {
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  });
-</script>
+    <div class="form-group" id="vcard-group" style="display:none;">
+      <input type="text" id="vcard-name" placeholder="Enter Name">
+      <input type="text" id="vcard-phone" placeholder="Enter Phone Number">
+      <input type="text" id="vcard-email" placeholder="Enter Email">
+    </div>
+
+    <div class="form-group" id="text-group" style="display:none;">
+      <input type="text" id="text" placeholder="Enter Text">
+    </div>
+
+    <div class="form-group" id="wifi-group" style="display:none;">
+      <input type="text" id="wifi-ssid" placeholder="Enter WiFi SSID">
+      <input type="text" id="wifi-password" placeholder="Enter WiFi Password">
+      <select id="wifi-encryption">
+        <option value="WPA">WPA/WPA2</option>
+        <option value="WEP">WEP</option>
+        <option value="">None</option>
+      </select>
+    </div>
+
+    <button onclick="generateQRCode()">Generate QR Code</button>
+    <div id="qr-code"></div>
+
+    <div class="download-buttons" style="display:none;" id="download-buttons">
+      <button onclick="downloadAsPDF()">Download as PDF</button>
+      <button onclick="downloadAsJPEG()">Download as JPEG</button>
+    </div>
+
+    <br>
+
+    <!-- ✅ Google AdSense Ad Unit with fixed style -->
+    <div style="width:100%; max-width:728px; margin:20px auto; text-align:center;">
+      <ins class="adsbygoogle"
+           style="display:inline-block;width:728px;height:90px"
+           data-ad-client="ca-pub-1234552946070834"
+           data-ad-slot="3273843323"></ins>
+    </div>
+  </div>
+
+  <!-- ✅ External Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+
+  <!-- ✅ Single AdSense script only -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234552946070834"
+          crossorigin="anonymous"></script>
+
+  <!-- ✅ AdSense push after load -->
+  <script>
+    window.addEventListener('load', function () {
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    });
+  </script>
+</body>
+
     
 </body>
 </html>
