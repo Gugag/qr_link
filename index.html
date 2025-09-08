@@ -1,97 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2,shrink-to-fit=no">
-    <meta property="og:title" content="QR Code Generator"> 
-    <meta property="og:description" content="Free QR Code Generator and use Without Registration" > 
-    <meta property="og:image" content="https://itdata.ge/images/prw.png"> 
-    <meta property="og:url"content="https://itdata.ge"> 
-    <title>QR Code Generator</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <meta name="description" content="Free QR Code Generator — create URL, PDF, Wi‑Fi, text, or vCard QR codes. Download as PNG, JPEG, or PDF. No login." />
+  <meta property="og:title" content="QR Code Generator" />
+  <meta property="og:description" content="Free QR Code Generator — use without registration." />
+  <meta property="og:image" content="https://itdata.ge/images/prw.png" />
+  <meta property="og:url" content="https://itdata.ge" />
+  <title>QR Code Generator</title>
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>QR Code Generator</h1>
-
-    <div class="form-group">
-      <label id="qrtype" for="type">Select QR Code Type</label><br>
-      <select id="type" onchange="showFields()">
-        <option value="link">Website URL</option>
-        <option value="pdf">PDF</option>
-        <option value="vcard">vCard</option>
-        <option value="text">Text</option>
-        <option value="wifi">WiFi</option>
-      </select>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1>QR Code Generator</h1>
+      <div class="header-actions">
+        <button id="themeToggle" class="ghost" title="Toggle theme" aria-label="Toggle theme">🌙</button>
+      </div>
     </div>
+  </header>
 
-    <!-- Input fields for different QR code types -->
-    <div class="form-group" id="link-group">
-      <input type="text" id="link" placeholder="Enter Website URL">
-    </div>
+  <main class="container">
+    <section class="card">
+      <div class="grid two">
+        <div class="form-group">
+          <label for="type">Select QR code type</label>
+          <select id="type" aria-describedby="typeHelp">
+            <option value="link">Website URL</option>
+            <option value="pdf">PDF</option>
+            <option value="vcard">vCard</option>
+            <option value="text">Text</option>
+            <option value="wifi">Wi‑Fi</option>
+          </select>
+          <div id="typeHelp" class="muted small">Tip: switch type and fill only the fields you need.</div>
+        </div>
 
-    <div class="form-group" id="pdf-group" style="display:none;">
-      <input type="text" id="pdf" placeholder="Enter PDF Link">
-    </div>
+        <div class="form-group">
+          <label for="size">QR size</label>
+          <div class="hstack">
+            <input id="size" type="range" min="128" max="1024" step="32" value="320" />
+            <output id="sizeOut" for="size">320 px</output>
+          </div>
+          <div class="muted small">Higher size gives sharper printouts.</div>
+        </div>
+      </div>
 
-    <div class="form-group" id="vcard-group" style="display:none;">
-      <input type="text" id="vcard-name" placeholder="Enter Name">
-      <input type="text" id="vcard-phone" placeholder="Enter Phone Number">
-      <input type="text" id="vcard-email" placeholder="Enter Email">
-    </div>
+      <!-- Type-specific inputs -->
+      <div id="link-group" class="form-group type-group">
+        <label for="link">Website URL</label>
+        <input type="url" id="link" placeholder="https://example.com" inputmode="url" />
+      </div>
 
-    <div class="form-group" id="text-group" style="display:none;">
-      <input type="text" id="text" placeholder="Enter Text">
-    </div>
+      <div id="pdf-group" class="form-group type-group hidden">
+        <label for="pdf">PDF link</label>
+        <input type="url" id="pdf" placeholder="https://example.com/file.pdf" inputmode="url" />
+      </div>
 
-    <div class="form-group" id="wifi-group" style="display:none;">
-      <input type="text" id="wifi-ssid" placeholder="Enter WiFi SSID">
-      <input type="text" id="wifi-password" placeholder="Enter WiFi Password">
-      <select id="wifi-encryption">
-        <option value="WPA">WPA/WPA2</option>
-        <option value="WEP">WEP</option>
-        <option value="">None</option>
-      </select>
-    </div>
+      <div id="vcard-group" class="form-group type-group hidden">
+        <div class="grid two">
+          <div>
+            <label for="vcard-name">Full name</label>
+            <input type="text" id="vcard-name" placeholder="Name Surname" />
+          </div>
+          <div>
+            <label for="vcard-phone">Phone</label>
+            <input type="tel" id="vcard-phone" placeholder="+995 5XX XX XX XX" inputmode="tel" />
+          </div>
+        </div>
+        <label for="vcard-email" class="mt8">Email</label>
+        <input type="email" id="vcard-email" placeholder="name@example.com" inputmode="email" />
+      </div>
 
-    <button onclick="generateQRCode()">Generate QR Code</button>
-    <div id="qr-code"></div>
+      <div id="text-group" class="form-group type-group hidden">
+        <label for="text">Text</label>
+        <textarea id="text" rows="3" placeholder="Any short text, note, or code"></textarea>
+      </div>
 
-    <div class="download-buttons" style="display:none;" id="download-buttons">
-      <button onclick="downloadAsPDF()">Download as PDF</button>
-      <button onclick="downloadAsJPEG()">Download as JPEG</button>
-    </div>
+      <div id="wifi-group" class="form-group type-group hidden">
+        <div class="grid two">
+          <div>
+            <label for="wifi-ssid">Wi‑Fi SSID</label>
+            <input type="text" id="wifi-ssid" placeholder="Network name" />
+          </div>
+          <div>
+            <label for="wifi-password">Password</label>
+            <input type="text" id="wifi-password" placeholder="Password" />
+          </div>
+        </div>
+        <label for="wifi-encryption" class="mt8">Encryption</label>
+        <select id="wifi-encryption">
+          <option value="WPA">WPA/WPA2</option>
+          <option value="WEP">WEP</option>
+          <option value="">None</option>
+        </select>
+      </div>
 
-    <br>
+      <div class="btn-row">
+        <button id="generateBtn" class="primary">Generate QR</button>
+        <button id="resetBtn" class="ghost">Reset</button>
+        <button id="saveBtn" class="ghost">Save</button>
+      </div>
+      <p class="muted small">Saved locally in this browser.</p>
+    </section>
 
-    <!-- ✅ Google AdSense Ad Unit with fixed style -->
-    <div style="width:100%; max-width:728px; margin:20px auto; text-align:center;">
-      <ins class="adsbygoogle"
-           style="display:inline-block;width:728px;height:90px"
-           data-ad-client="ca-pub-1234552946070834"
-           data-ad-slot="3273843323"></ins>
-    </div>
-  </div>
+    <section class="card">
+      <h2>Preview</h2>
+      <div id="qrWrap" class="qr-wrap">
+        <canvas id="qrCanvas" width="320" height="320" aria-label="QR code"></canvas>
+      </div>
 
-  <!-- ✅ External Scripts -->
+      <div id="downloadRow" class="btn-row hidden">
+        <button id="pngBtn" class="secondary">Download PNG</button>
+        <button id="jpegBtn" class="secondary">Download JPEG</button>
+        <button id="pdfBtn" class="secondary">Download PDF</button>
+        <button id="copyBtn" class="ghost">Copy Image</button>
+        <button id="shareBtn" class="ghost">Share…</button>
+      </div>
+    </section>
+
+    <!-- Ad slot (unchanged API usage) -->
+    <section class="ad card">
+      <div class="ad-box">
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:728px;height:90px"
+             data-ad-client="ca-pub-1234552946070834"
+             data-ad-slot="3273843323"></ins>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container muted small">
+    <p>Works offline for UI; internet is required only to load libraries and for PDF links.</p>
+  </footer>
+
+  <!-- Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="script.js"></script>
 
-  <!-- ✅ Single AdSense script only -->
- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234552946070834"
-     crossorigin="anonymous"></script>
-
-  <!-- ✅ AdSense push after load -->
-  <script>
-    window.addEventListener('load', function () {
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    });
-  </script>
-</body>
-
-    
+  <!-- Single AdSense script -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234552946070834" crossorigin="anonymous"></script>
+  <script>window.addEventListener('load',()=>{(adsbygoogle=window.adsbygoogle||[]).push({});});</script>
 </body>
 </html>
